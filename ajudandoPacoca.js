@@ -7,8 +7,8 @@ retorno = retorno.split(" ")
 function separaY(listaDeRetrono) {
     /* 
     inclui os elementos que possuem "y" em uma lista especial
-    e elementos sem "y" em outras lista
-    devonvendo depois dessa filtagem um array que comtém dois arrays(ypslons e nYpslons).
+    e elementos sem "y" em outra lista
+    devonvendo depois dessa filtragem um array que comtém dois arrays(ypslons e nYpslons).
     */ 
 
     let ypslons = []
@@ -50,7 +50,7 @@ function separaNegativosPositivos(listaComY) {
 function somaY(listaResultadoPosNEg) {
     /*
     recebe um array com dois novos arrays,
-    o priemiro com elemento positivos
+    o primeiro com elementos positivos
     e os segundo elementos negativos.
     Logo após retorna a soma dos elementos junto ao caracter "y".
     */
@@ -68,7 +68,41 @@ function somaY(listaResultadoPosNEg) {
     let resultado = `${soma}y`
         return resultado;
 }
+
+function somaNYpslons(NYpslons) {
+    /*
+    recebe um array com dois novos arrays,
+    o primeiro com elementos com "y"
+    e os segundo elementos sem "y".
+    Logo após retorna a soma dos elementos quie não possuem o caracter "y".
+    */
+    let nYpslons = NYpslons[1]
+    let soma = 0
+    for(let i = 0; i < nYpslons.length; i++) {
+        soma += Number(nYpslons[i])
+    }
+        return soma
+}
+
+//    Devolve os valores com "y" e os valores sem "y".
+
+let resultado = separaY(retorno)[1]
+resultado.push(somaY(separaNegativosPositivos(separaY(retorno))))
+    
+
+
+
+/*
+
 console.log(retorno)
 console.log(separaY(retorno))
 console.log(separaNegativosPositivos(separaY(retorno)))
 console.log(somaY(separaNegativosPositivos(separaY(retorno))))
+
+*/
+
+console.log("retorno:", resultado)
+
+// Retorna a soma de todos elementos
+
+console.log(somaNYpslons(separaY(retorno)), somaY(separaNegativosPositivos(separaY(retorno))))
